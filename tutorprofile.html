@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Profile - SkillSwap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #ff6f61, #6a11cb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 20px;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ff3b2f;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tutor Profile</h1>
+    <div id="tutorProfile"></div>
+
+    <script>
+        // Sample tutor profile data (ideally fetched from a backend)
+        const tutor = {
+            name: 'Jane',
+            skill: 'Python',
+            bio: 'Data Science and AI expert',
+            rating: 4.8,
+            reviews: [
+                { user: 'Mark', review: 'Great tutor, highly recommend!', rating: 5 },
+                { user: 'Alice', review: 'Very knowledgeable and patient!', rating: 4.5 }
+            ]
+        };
+
+        // Display tutor profile
+        const tutorProfile = document.getElementById('tutorProfile');
+        tutorProfile.innerHTML = `
+            <div class="card">
+                <h3>${tutor.name}</h3>
+                <p><strong>Skill:</strong> ${tutor.skill}</p>
+                <p><strong>Bio:</strong> ${tutor.bio}</p>
+                <p><strong>Rating:</strong> ${tutor.rating} / 5</p>
+            </div>
+
+            <h4>Reviews:</h4>
+            <div class="card">
+                ${tutor.reviews.map(review => `
+                    <p><strong>${review.user}:</strong> ${review.review} (Rating: ${review.rating} / 5)</p>
+                `).join('')}
+            </div>
+
+            <button class="button" onclick="requestSession('${tutor.name}')">Request a Session</button>
+        `;
+
+        // Function to send session request
+        function requestSession(tutorName) {
+            alert(`Session request sent to ${tutorName}.`);
+            // Here you would send the session request via an API or save it to localStorage
+        }
+    </script>
+</body>
+</html>

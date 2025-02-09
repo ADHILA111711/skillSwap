@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Dashboard - SkillSwap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #ff6f61, #6a11cb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .dashboard-section {
+            margin-bottom: 40px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #ff3b2f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Your Skill Dashboard</h1>
+
+    <div class="dashboard-section">
+        <h2>Students Available for Teaching</h2>
+        <div class="card">
+            <p>John is available to teach JavaScript.</p>
+            <button class="button" onclick="window.location.href='booking.html'">Contact</button>
+        </div>
+        <div class="card">
+            <p>Jane is available to teach Python.</p>
+            <button class="button" onclick="window.location.href='booking.html'">Contact</button>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>Requests from Students</h2>
+        <div class="card">
+            <p>Mark wants to learn Python.</p>
+            <button class="button" onclick="window.location.href='booking.html'">Accept Request</button>
+        </div>
+        <div class="card">
+            <p>Alice wants to learn JavaScript.</p>
+            <button class="button" onclick="window.location.href='booking.html'">Accept Request</button>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>Suggested Skills for You to Teach</h2>
+        <div class="card">
+            <p>Based on your interest in learning Python, you could teach Django or Flask.</p>
+        </div>
+    </div>
+
+    <!-- Additional button to go to booking page -->
+    <div class="dashboard-section">
+        <button class="button" onclick="window.location.href='booking.html'">Go to Booking Page</button>
+    </div>
+</div>
+
+<script>
+    // Get profile data from localStorage
+    const profileData = JSON.parse(localStorage.getItem('profileData'));
+    
+    if (profileData) {
+        // Display user info or use it for skill suggestions, etc.
+        console.log(profileData);
+        // Example: Display their skill interests
+        document.querySelector('.dashboard-section h2').textContent = `${profileData.name}'s Skill Dashboard`;
+    }
+</script>
+
+</body>
+</html>

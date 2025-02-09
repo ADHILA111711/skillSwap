@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Tutors - SkillSwap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #ff6f61, #6a11cb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ff3b2f;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Search for Tutors</h1>
+    <input type="text" id="searchInput" placeholder="Search for a skill..." onkeyup="searchTutors()">
+    
+    <div id="results"></div>
+
+    <script>
+        // Sample tutor profiles (this would be fetched from a database or an API in production)
+        const tutors = [
+            { name: 'John', skill: 'JavaScript', bio: 'Experienced JS Developer', rating: 4.5 },
+            { name: 'Jane', skill: 'Python', bio: 'Data Science and AI expert', rating: 4.8 },
+            { name: 'Mark', skill: 'JavaScript', bio: 'Full-stack Developer', rating: 4.3 },
+            { name: 'Alice', skill: 'Python', bio: 'Experienced Python Tutor', rating: 4.7 }
+        ];
+
+        // Function to search for tutors based on the skill
+        function searchTutors() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; // Clear results before showing new ones
+
+            const filteredTutors = tutors.filter(tutor => tutor.skill.toLowerCase().includes(query));
+
+            filteredTutors.forEach(tutor => {
+                const tutorCard = document.createElement('div');
+                tutorCard.classList.add('card');
+                tutorCard.innerHTML = `
+                    <h3>${tutor.name}</h3>
+                    <p><strong>Skill:</strong> ${tutor.skill}</p>
+                    <p><strong>Bio:</strong> ${tutor.bio}</p>
+                    <p><strong>Rating:</strong> ${tutor.rating} / 5</p>
+                    <button class="button" onclick="requestSession('${tutor.name}')">Request a Session</button>
+                `;
+                resultsContainer.appendChild(tutorCard);
+            });
+        }
+
+        // Function to send session request
+        function requestSession(tutorName) {
+            alert(`Session request sent to ${tutorName}.`);
+            // Here you would send the session request via an API or save it to localStorage
+        }
+    </script>
+</body>
+</html>
