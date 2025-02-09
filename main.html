@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Dashboard - SkillSwap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #ff6f61, #6a11cb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Icon Buttons */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .icon-container .icon-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            margin: 20px;
+            border-radius: 15px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .icon-container .icon-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .icon-container i {
+            font-size: 3rem;
+            color: #ff6f61;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .icon-container .icon-card:hover i {
+            color: #2575fc;
+        }
+
+        .icon-container p {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            backdrop-filter: blur(5px);
+        }
+
+        footer p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to SkillSwap Dashboard</h1>
+
+    <div class="icon-container">
+        <!-- Search Icon -->
+        <div class="icon-card" onclick="window.location.href='search.html'">
+            <i class="fas fa-search"></i>
+            <p>Search</p>
+        </div>
+
+        <!-- Tutor Profile Icon -->
+        <div class="icon-card" onclick="window.location.href='tutorprofile.html'">
+            <i class="fas fa-user-tie"></i>
+            <p>Tutor Profile</p>
+        </div>
+
+        <!-- Track Progress Icon -->
+        <div class="icon-card" onclick="window.location.href='trackprogress.html'">
+            <i class="fas fa-chart-line"></i>
+            <p>Track Progress</p>
+        </div>
+
+        <!-- Skills Icon -->
+        <div class="icon-card" onclick="window.location.href='skill.html'">
+            <i class="fas fa-cogs"></i>
+            <p>Skills</p>
+        </div>
+
+        <!-- Leaderboard Icon -->
+        <div class="icon-card" onclick="window.location.href='leaderboard.html'">
+            <i class="fas fa-trophy"></i>
+            <p>Leaderboard</p>
+        </div>
+
+        <!-- Forum Icon -->
+        <div class="icon-card" onclick="window.location.href='forum.html'">
+            <i class="fas fa-comments"></i>
+            <p>Forum</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 SkillSwap. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - SkillSwap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://via.placeholder.com/32" type="image/png"> <!-- Custom icon -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+            color: #333;
+        }
+
+        header {
+            background: #2575fc;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            border-bottom: 4px solid #ff6f61;
+        }
+
+        .forum-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2575fc;
+        }
+
+        .post-form input,
+        .post-form textarea,
+        .post-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .post-form textarea {
+            min-height: 150px;
+        }
+
+        .tags-input {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #2575fc;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .question-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2575fc;
+        }
+
+        .question-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .upvote-button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .upvote-button:hover {
+            background-color: #ff3b2f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2575fc;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="main.html" style="color: white; text-decoration: none;">&lt; Back to Main</a>
+        <h1>Forum - SkillSwap</h1>
+    </header>
+
+    <div class="forum-container">
+        <h2>Ask a Question or Share an Idea</h2>
+        <form class="post-form">
+            <input type="text" id="questionTitle" placeholder="Enter the title of your question" required>
+            <textarea id="questionDescription" placeholder="Describe your question or idea in detail" required></textarea>
+
+            <div class="tags-input">
+                <input type="text" id="tagsInput" placeholder="Add a tag (e.g. JavaScript, Frontend)" oninput="updateTags()" />
+            </div>
+
+            <button type="submit" class="submit-button">Post Question</button>
+        </form>
+
+        <h3>Questions & Ideas</h3>
+
+        <div class="question-card">
+            <h3>How can I improve my JavaScript skills?</h3>
+            <p>I'm trying to get better at JavaScript. Any tips or resources would be helpful!</p>
+            <div class="tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Frontend</span>
+            </div>
+            <button class="upvote-button">Upvote</button>
+        </div>
+
+        <div class="question-card">
+            <h3>Best practices for CSS grid layout?</h3>
+            <p>What are the best practices for using CSS grid layout in responsive web design?</p>
+            <div class="tags">
+                <span class="tag">CSS</span>
+                <span class="tag">Web Design</span>
+            </div>
+            <button class="upvote-button">Upvote</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 SkillSwap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to update tags dynamically as user types
+        function updateTags() {
+            const tagsInput = document.getElementById('tagsInput');
+            const tagContainer = document.querySelector('.tags-input');
+
+            if (tagsInput.value.includes(',')) {
+                const tags = tagsInput.value.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
+                tagContainer.innerHTML = '';  // Clear existing tags
+                tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'tag';
+                    tagElement.textContent = tag;
+                    tagContainer.appendChild(tagElement);
+                });
+                tagsInput.value = '';  // Clear input field
+            }
+        }
+
+        // Handle form submission
+        document.querySelector('.post-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form reload
+            alert('Your question has been posted!');
+        });
+    </script>
+
+</body>
+</html>
